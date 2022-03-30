@@ -36,7 +36,7 @@ const BurgerIngridients = (props) => {
                   <p className="text text_type_main-default">Начинки</p>
                   <div className={styles.grid}>
                       {props.data.filter(item => item.type === 'main').map((item, index) => {
-                          return <Card item={item} key={index}/>
+                          return <Card item={item} key={item._id}/>
                       })}
                   </div>
               </div>

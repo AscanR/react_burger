@@ -1,15 +1,27 @@
 .AppHeader {
     display: flex;
-    margin: 40px 40px;
+    flex-direction: row;
+    margin: 40px 0 40px;
     background-color: #1C1C21;
-    width: 1920px;
-    min-height: 88px;
+    max-height: 88px;
     align-items: center;
-    justify-content: center;
+    justify-items: center;
 }
 .item {
     display: flex;
     align-items: center;
     padding: 16px 20px;
+}
+.item_last {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    margin-right: 112px;
+}
+.item_lk {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    margin-left: 288px;
 }
 

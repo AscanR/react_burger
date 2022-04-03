@@ -1,0 +1,7 @@
+.element {
+    display: flex;
+    flex-direction: row;
+}
+.img {
+    margin-right: 8px;
+}

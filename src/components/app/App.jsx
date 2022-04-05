@@ -7,7 +7,7 @@ import OrderDetails from '../order-details/OrderDetails'
 import IngredientDetails from '../ingredient-details/IngredientDetails'
 
 function App() {
-
+    const URL = "https://norma.nomoreparties.space/api/ingredients"
     const [data, setData] = useState([])
     const [isOrderDetailsOpened, setIsOrderDetailsOpened] = useState(false)
     const [isIngredientDetailsOpened, setIsIngredientDetailsOpened] = useState(false)
@@ -18,13 +18,18 @@ function App() {
         setIsIngredientDetailsOpened(false)
     }
 
-    const handleEscKeydown = (event) => {
-        event.key === "Escape" && closeAllModals();
-    }
-
     useEffect(() => {
-        fetch('https://norma.nomoreparties.space/api/ingredients')
-              .then(response => response.json())
+        fetch(`${URL}`, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+              .then((response) => {
+                  if (!response.ok) {
+                      throw new Error("HTTP error, status = " + response.status)
+                  }
+                  return response.json()
+              })
               .then(ingredients => {
                   setData(ingredients.data)
               })
@@ -43,7 +48,6 @@ function App() {
                     <Modal
                           title=''
                           onOverlayClick={closeAllModals}
-                          onEscKeydown={handleEscKeydown}
                           closeButton={closeAllModals}
                     >
                         <OrderDetails/>
@@ -52,7 +56,6 @@ function App() {
                     <Modal
                           title='Детали ингредиента'
                           onOverlayClick={closeAllModals}
-                          onEscKeydown={handleEscKeydown}
                           closeButton={closeAllModals}
                     >
                         <IngredientDetails data={cardData}/>

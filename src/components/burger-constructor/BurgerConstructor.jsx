@@ -2,32 +2,36 @@ import React from 'react'
 import {Button, ConstructorElement, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components'
 import styles from './BurgerConstructor.module.css'
 import PropTypes from "prop-types";
-import Ingridients from "../ingridients/Ingridients";
+import Ingredients from "../ingredients/Ingredients";
 
 const BurgerConstructor = ({data, setIsOrderDetailsOpened}) => {
 
     return (
           <section className={styles.section}>
               <div className={styles.elements}>
-                  <ConstructorElement
-                        type="top"
-                        isLocked={true}
-                        text="Краторная булка N-200i (верх)"
-                        price={20}
-                        thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
-                  />
+                  {data.filter(item => item._id === '60d3b41abdacab0026a733c6').map((item) => {
+                      return <ConstructorElement
+                            type="top"
+                            isLocked={true}
+                            text={`${item.name} (верх)`}
+                            price={item.price}
+                            thumbnail={item.image}
+                      />
+                  })}
                   <div className={styles.variables}>
-                      {data.filter(item => item.type !== 'bun').map((item, index) => {
-                          return <Ingridients item={item} key={item._id}/>
+                      {data.filter(item => item.type !== 'bun').map((item) => {
+                          return <Ingredients item={item} key={item._id}/>
                       })}
                   </div>
-                  <ConstructorElement
-                        type="bottom"
-                        isLocked={true}
-                        text="Краторная булка N-200i (низ)"
-                        price={20}
-                        thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
-                  />
+                  {data.filter(item => item._id === '60d3b41abdacab0026a733c6').map((item) => {
+                      return <ConstructorElement
+                            type="bottom"
+                            isLocked={true}
+                            text={`${item.name} (низ)`}
+                            price={item.price}
+                            thumbnail={item.image}
+                      />
+                  })}
               </div>
               <div className={styles.total}>
                   <div className={styles.totalprice}>
@@ -43,7 +47,21 @@ const BurgerConstructor = ({data, setIsOrderDetailsOpened}) => {
 }
 
 BurgerConstructor.propTypes = {
-    data: PropTypes.array.isRequired
+    data: PropTypes.arrayOf(PropTypes.shape({
+        _id: PropTypes.string,
+        name: PropTypes.string,
+        type: PropTypes.string,
+        proteins: PropTypes.number,
+        fat: PropTypes.number,
+        carbohydrates: PropTypes.number,
+        calories: PropTypes.number,
+        price: PropTypes.number,
+        image: PropTypes.string,
+        image_mobile: PropTypes.string,
+        image_large: PropTypes.string,
+        __v: PropTypes.number
+    })).isRequired,
+    setIsOrderDetailsOpened: PropTypes.func.isRequired
 }
 
 export default BurgerConstructor

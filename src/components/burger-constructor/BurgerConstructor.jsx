@@ -3,6 +3,7 @@ import {Button, ConstructorElement, CurrencyIcon} from '@ya.praktikum/react-deve
 import styles from './BurgerConstructor.module.css'
 import PropTypes from "prop-types";
 import Ingredients from "../ingredients/Ingredients";
+import dataType from "../data-type/DataType";
 
 const BurgerConstructor = ({data, setIsOrderDetailsOpened}) => {
 
@@ -11,6 +12,7 @@ const BurgerConstructor = ({data, setIsOrderDetailsOpened}) => {
               <div className={styles.elements}>
                   {data.filter(item => item._id === '60d3b41abdacab0026a733c6').map((item) => {
                       return <ConstructorElement
+                            key={item._id}
                             type="top"
                             isLocked={true}
                             text={`${item.name} (верх)`}
@@ -25,6 +27,7 @@ const BurgerConstructor = ({data, setIsOrderDetailsOpened}) => {
                   </div>
                   {data.filter(item => item._id === '60d3b41abdacab0026a733c6').map((item) => {
                       return <ConstructorElement
+                            key={item._id}
                             type="bottom"
                             isLocked={true}
                             text={`${item.name} (низ)`}
@@ -47,20 +50,7 @@ const BurgerConstructor = ({data, setIsOrderDetailsOpened}) => {
 }
 
 BurgerConstructor.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
-        _id: PropTypes.string,
-        name: PropTypes.string,
-        type: PropTypes.string,
-        proteins: PropTypes.number,
-        fat: PropTypes.number,
-        carbohydrates: PropTypes.number,
-        calories: PropTypes.number,
-        price: PropTypes.number,
-        image: PropTypes.string,
-        image_mobile: PropTypes.string,
-        image_large: PropTypes.string,
-        __v: PropTypes.number
-    })).isRequired,
+    data: dataType.isRequired,
     setIsOrderDetailsOpened: PropTypes.func.isRequired
 }
 

@@ -19,7 +19,7 @@ const Modal = ({title, onOverlayClick, children, closeButton}) => {
         return () => {
             document.removeEventListener('keydown', handleEscKeydown)
         }
-    }, ['keydown'])
+    }, [closeButton])
 
     return ReactDOM.createPortal(
           <>
@@ -39,7 +39,7 @@ const Modal = ({title, onOverlayClick, children, closeButton}) => {
 Modal.propTypes = {
     title: PropTypes.string.isRequired,
     onOverlayClick: PropTypes.func.isRequired,
-    children: PropTypes.object.isRequired,
-    closeButton: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    closeButton: PropTypes.func.isRequired
 }
 export default Modal

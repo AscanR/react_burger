@@ -19,7 +19,7 @@ const Ingredients = ({item}) => {
 };
 
 Ingredients.propTypes = {
-    item: dataType.isRequired
+    item: PropTypes.arrayOf(dataType).isRequired
 }
 
 export default Ingredients;

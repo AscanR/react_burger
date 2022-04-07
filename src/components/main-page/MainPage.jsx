@@ -21,7 +21,7 @@ const MainPage = ({data, setIsIngredientDetailsOpened, setIsOrderDetailsOpened, 
 };
 
 MainPage.propTypes = {
-    data: dataType.isRequired,
+    data: PropTypes.arrayOf(dataType).isRequired,
     setIsIngredientDetailsOpened: PropTypes.func.isRequired,
     setIsOrderDetailsOpened: PropTypes.func.isRequired,
     setCardData: PropTypes.func.isRequired,

@@ -61,7 +61,7 @@ const BurgerIngredients = ({setIsIngredientDetailsOpened, setCardData, data}) =>
 }
 
 BurgerIngredients.propTypes = {
-    data: dataType.isRequired,
+    data: PropTypes.arrayOf(dataType).isRequired,
     setIsIngredientDetailsOpened: PropTypes.func.isRequired,
     setCardData: PropTypes.func.isRequired
 

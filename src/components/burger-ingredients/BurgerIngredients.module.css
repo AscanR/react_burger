@@ -1,0 +1,45 @@
+.BurgerIngridients {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+}
+
+.nav {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.ingridients {
+    display: flex;
+    flex-direction: column;
+    max-height: 600px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.ingridients::-webkit-scrollbar {
+    width: 8px;
+}
+.ingridients::-webkit-scrollbar-track {
+    background: #2F2F37;
+}
+.ingridients::-webkit-scrollbar-thumb {
+    background-color: #4C4CFF;
+    border: 8px solid #4C4CFF;
+}
+
+.grid {
+    display: grid;
+    box-sizing: border-box;
+    column-gap: 24px;
+    row-gap: 32px;
+    max-width: 600px;
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
+    padding-bottom: 40px;
+    margin-top: 24px;
+    margin-left: 16px;
+}

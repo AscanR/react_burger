@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Button, ConstructorElement, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components'
 import styles from './BurgerConstructor.module.css'
 import PropTypes from "prop-types";
 import Ingredients from "../ingredients/Ingredients";
-import dataType from "../data-type/DataType";
+import DataContext from "../../services/data-context/DataContext";
+import {sendOrder} from "../../utils/sendOrder/sendOrder";
 
-const BurgerConstructor = ({data, setIsOrderDetailsOpened}) => {
+const BurgerConstructor = ({setIsOrderDetailsOpened}) => {
+
+    const {data} = useContext(DataContext)
+    const {setOrderData} = useContext(DataContext)
 
     return (
           <section className={styles.section}>
@@ -41,7 +45,17 @@ const BurgerConstructor = ({data, setIsOrderDetailsOpened}) => {
                       <span className="text text_type_digits-medium mr-2">610</span>
                       <CurrencyIcon type="primary"/>
                   </div>
-                  <Button type="primary" size="large" onClick={() => setIsOrderDetailsOpened(true)}>
+                  <Button type="primary"
+                          size="large"
+                          onClick={() => {
+                              setIsOrderDetailsOpened(true)
+                              sendOrder(data)
+                                    .then(data => {
+                                        setOrderData(data.order.number)
+                                    })
+                                    .catch(err => console.log(err))
+                          }}
+                  >
                       Оформить заказ
                   </Button>
               </div>
@@ -50,7 +64,6 @@ const BurgerConstructor = ({data, setIsOrderDetailsOpened}) => {
 }
 
 BurgerConstructor.propTypes = {
-    data: PropTypes.arrayOf(dataType).isRequired,
     setIsOrderDetailsOpened: PropTypes.func.isRequired
 }
 

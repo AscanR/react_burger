@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './IngredientDetails.module.css'
-import PropTypes from 'prop-types'
-import dataType from "../data-type/DataType";
+import dataType from "../../services/data-type/DataType";
 
 
 const IngredientDetails = ({data}) => {

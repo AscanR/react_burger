@@ -2,7 +2,7 @@ import React from 'react'
 import {CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components'
 import styles from './Card.module.css'
 import PropTypes from "prop-types";
-import dataType from "../data-type/DataType";
+import dataType from "../../services/data-type/DataType";
 
 const Card = ({item, setIsIngredientDetailsOpened, setCardData}) => {
     return (

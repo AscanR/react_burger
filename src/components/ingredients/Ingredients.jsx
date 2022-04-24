@@ -3,7 +3,7 @@ import styles from "./Inredients.module.css";
 import {DragIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {ConstructorElement} from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
-import dataType from "../data-type/DataType";
+import dataType from "../../services/data-type/DataType";
 
 const Ingredients = ({item}) => {
     return (
@@ -19,7 +19,7 @@ const Ingredients = ({item}) => {
 };
 
 Ingredients.propTypes = {
-    item: PropTypes.arrayOf(dataType).isRequired
+    item: dataType.isRequired
 }
 
 export default Ingredients;

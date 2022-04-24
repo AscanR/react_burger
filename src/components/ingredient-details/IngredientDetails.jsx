@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './IngredientDetails.module.css'
-import dataType from "../data-type/DataType";
+import dataType from "../../services/data-type/DataType";
 
 
 const IngredientDetails = ({data}) => {

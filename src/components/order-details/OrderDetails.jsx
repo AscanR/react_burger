@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import styles from './OrderDetails.module.css'
 import img from '../../images/donebutton.png'
-import DataContext from "../data-context/DataContext";
+import DataContext from "../../services/data-context/DataContext";
 
 
 const OrderDetails = () => {

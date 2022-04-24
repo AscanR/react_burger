@@ -3,14 +3,13 @@ import {Button, ConstructorElement, CurrencyIcon} from '@ya.praktikum/react-deve
 import styles from './BurgerConstructor.module.css'
 import PropTypes from "prop-types";
 import Ingredients from "../ingredients/Ingredients";
-import DataContext from "../data-context/DataContext";
-import {OrderApi} from "../order-api/OrderApi";
+import DataContext from "../../services/data-context/DataContext";
+import {sendOrder} from "../../utils/sendOrder/sendOrder";
 
 const BurgerConstructor = ({setIsOrderDetailsOpened}) => {
 
     const {data} = useContext(DataContext)
     const {setOrderData} = useContext(DataContext)
-    const {orderData} = useContext(DataContext)
 
     return (
           <section className={styles.section}>
@@ -50,7 +49,7 @@ const BurgerConstructor = ({setIsOrderDetailsOpened}) => {
                           size="large"
                           onClick={() => {
                               setIsOrderDetailsOpened(true)
-                              OrderApi(data)
+                              sendOrder(data)
                                     .then(data => {
                                         setOrderData(data.order.number)
                                     })
